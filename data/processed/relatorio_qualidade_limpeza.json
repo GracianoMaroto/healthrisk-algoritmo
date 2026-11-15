@@ -1,0 +1,29 @@
+{
+  "n_total_demo_bruto": 9254,
+  "n_excluidos_menores_18": 3398,
+  "n_excluidos_gestantes": 55,
+  "n_universo_adulto_nao_gestante": 5801,
+  "n_excluidos_sem_antropometria_valida": 670,
+  "n_excluidos_sem_criterio_alvo": 0,
+  "n_amostra_analitica_final": 5131,
+  "prevalencia_diabetes_amostra_pct": 19.65,
+  "n_casos_diabetes": 1008,
+  "n_controles_sem_diabetes": 4123,
+  "detalhamento_criterios_alvo": {
+    "autorrelato_diq010_eq_1": 764,
+    "hba1c_ge_6_5": 693,
+    "glicemia_jejum_ge_126": 380,
+    "casos_ocultos_apenas_exame_sem_autorrelato": 244
+  },
+  "outliers_e_inconsistencias_convertidos_nan": {
+    "altura_fora_120_210cm": 0,
+    "peso_fora_30_250kg": 0,
+    "imc_divergente_recalculo": 0,
+    "imc_fora_12_80": 2,
+    "cintura_fora_50_180cm": 0,
+    "pressao_inconsistente_ou_extrema": 53,
+    "minutos_sentado_maior_1440": 0,
+    "energia_fora_500_6000kcal": 91,
+    "acucar_maior_400g": 45
+  }
+}

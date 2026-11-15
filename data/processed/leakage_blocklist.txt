@@ -1,0 +1,16 @@
+# DATA LEAKAGE SHIELD — VARIÁVEIS BLOQUEADAS NO VETOR PREDITOR X (BLOCO 3)
+# Qualquer coluna abaixo define diretamente o alvo clínico/medicamentoso ou ocorre pós-diagnóstico:
+DIQ010
+LBXGH
+LBXGLU
+DIQ050
+DIQ070
+DID040
+diabetes_autorrelato
+hba1c
+glicemia_jejum
+usa_insulina
+usa_hipoglicemiante
+idade_diagnostico
+perfil_glicemico_3classes
+diabetes

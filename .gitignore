@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.Python
+dist/
+build/
+.eggs/
+
+# Testes e cobertura
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.hypothesis/
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+ENV/
+
+# Segredos e variáveis de ambiente
+.env
+.env.*
+!.env.example
+
+# IDEs e editores
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Arquivos internos, não destinados ao GitHub
+layout algoritmo.jpeg
+layout algoritmo.jpg
+docs/Bloco_3_Roteiro_Pitch_e_Defesa_Oral.docx
+docs/Bloco_3_Roteiro_Pitch_e_Defesa_Oral.pdf

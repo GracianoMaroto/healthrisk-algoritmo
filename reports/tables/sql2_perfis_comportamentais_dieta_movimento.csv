@@ -1,0 +1,13 @@
+perfil_movimento,perfil_dieta,n_individuos,prevalencia_diabetes_pct,risco_predito_medio_pct,imc_medio
+Inativo & Pouco Sentado,1. Dieta Protetora (Top),452,30.75,50.45,28.65
+Inativo & Muito Sentado,1. Dieta Protetora (Top),192,30.73,51.36,29.42
+Inativo & Muito Sentado,2. Dieta Intermediária,230,28.7,46.91,31.41
+Inativo & Pouco Sentado,2. Dieta Intermediária,428,23.6,48.12,29.95
+Inativo & Pouco Sentado,3. Dieta Hipercalórica/Sódio,234,23.5,40.3,30.76
+Inativo & Muito Sentado,3. Dieta Hipercalórica/Sódio,154,18.83,41.3,32.37
+Ativo & Pouco Sentado,1. Dieta Protetora (Top),802,18.33,36.7,28.68
+Ativo & Muito Sentado,1. Dieta Protetora (Top),242,18.18,35.49,29.44
+Ativo & Muito Sentado,2. Dieta Intermediária,272,16.18,30.96,29.97
+Ativo & Pouco Sentado,2. Dieta Intermediária,808,14.6,32.04,29.39
+Ativo & Muito Sentado,3. Dieta Hipercalórica/Sódio,201,12.94,28.73,30.98
+Ativo & Pouco Sentado,3. Dieta Hipercalórica/Sódio,657,12.33,27.78,29.5

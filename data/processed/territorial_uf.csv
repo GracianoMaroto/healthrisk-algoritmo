@@ -1,0 +1,28 @@
+codigo_uf,uf,nome_uf,regiao,nome_regiao,populacao,renda_mediana_uf,escolaridade_sup_pct,prev_diabetes_uf,pct_insuf_atividade_uf,pct_excesso_peso_uf,ano,internacoes_diabetes,n_estabelecimentos_ab,cobertura_ab,internacoes_diabetes_100k,indice_contexto_territorial,prioridade_territorial,ranking_vulnerabilidade
+15,PA,Pará,N,Norte,8120131,1124.0,13.4,6.1,44.1,55.9,2023,7420,1890,70.3,91.38,1.067,Prioridade Crítica,1
+21,MA,Maranhão,NE,Nordeste,6776699,945.0,11.8,6.2,45.6,53.4,2023,6890,2310,84.7,101.67,0.972,Prioridade Crítica,2
+27,AL,Alagoas,NE,Nordeste,3127683,1032.0,12.6,7.6,46.2,57.3,2023,2860,980,82.3,91.44,0.836,Prioridade Crítica,3
+13,AM,Amazonas,N,Norte,3941613,1172.0,15.6,6.3,43.8,60.9,2023,3190,740,71.8,80.93,0.716,Prioridade Crítica,4
+26,PE,Pernambuco,NE,Nordeste,9058931,1245.0,15.2,8.4,45.1,60.5,2023,8120,2590,80.9,89.64,0.652,Prioridade Crítica,5
+29,BA,Bahia,NE,Nordeste,14141626,1139.0,13.7,7.9,43.9,57.6,2023,12450,4180,79.8,88.04,0.601,Prioridade Crítica,6
+12,AC,Acre,N,Norte,830018,1098.0,15.1,5.9,42.5,56.4,2023,780,265,81.2,93.97,0.583,Prioridade Crítica,7
+16,AP,Amapá,N,Norte,733759,1285.0,16.9,6.0,41.8,58.7,2023,615,164,74.1,83.81,0.468,Prioridade Crítica,8
+22,PI,Piauí,NE,Nordeste,3271199,1110.0,13.9,7.1,44.9,55.1,2023,3180,1390,92.4,97.21,0.435,Prioridade Crítica,9
+11,RO,Rondônia,N,Norte,1581196,1365.0,14.8,6.4,41.2,57.8,2023,1345,412,76.4,85.06,0.319,Atenção Tática,10
+28,SE,Sergipe,NE,Nordeste,2210004,1290.0,15.8,7.5,43.5,58.4,2023,1790,670,84.0,81.0,0.17,Atenção Tática,11
+25,PB,Paraíba,NE,Nordeste,3974687,1215.0,15.4,7.9,44.0,59.1,2023,3490,1580,91.0,87.81,0.141,Atenção Tática,12
+24,RN,Rio Grande do Norte,NE,Nordeste,3302729,1378.0,16.1,8.1,42.7,60.2,2023,2740,1120,83.5,82.96,0.124,Atenção Tática,13
+23,CE,Ceará,NE,Nordeste,8794957,1166.0,14.7,7.8,43.2,58.9,2023,6950,2640,86.1,79.02,0.075,Atenção Tática,14
+33,RJ,Rio de Janeiro,SE,Sudeste,16055174,2180.0,23.1,9.3,42.1,63.2,2023,11640,2410,68.4,72.5,0.028,Atenção Tática,15
+14,RR,Roraima,N,Norte,636707,1409.0,17.2,5.8,39.4,58.1,2023,540,178,79.5,84.81,0.017,Atenção Tática,16
+43,RS,Rio Grande do Sul,S,Sul,10882965,2260.0,20.8,8.8,39.5,64.1,2023,9120,2890,75.2,83.8,-0.232,Atenção Tática,17
+50,MS,Mato Grosso do Sul,CO,Centro-Oeste,2757013,1940.0,19.8,8.1,40.1,61.9,2023,2140,710,79.1,77.62,-0.323,Atenção Tática,18
+17,TO,Tocantins,N,Norte,1511460,1456.0,16.4,6.8,40.3,56.2,2023,1190,540,88.6,78.73,-0.416,Monitoramento Padrão,19
+52,GO,Goiás,CO,Centro-Oeste,7056495,1850.0,18.6,7.6,38.6,59.7,2023,5190,1680,76.9,73.55,-0.424,Monitoramento Padrão,20
+51,MT,Mato Grosso,CO,Centro-Oeste,3658649,1985.0,18.9,7.3,39.7,60.4,2023,2680,960,78.4,73.25,-0.455,Monitoramento Padrão,21
+35,SP,São Paulo,SE,Sudeste,44411238,2345.0,24.5,8.6,39.2,62.1,2023,26890,6420,67.9,60.55,-0.563,Monitoramento Padrão,22
+31,MG,Minas Gerais,SE,Sudeste,20539989,1768.0,18.4,8.2,39.8,59.4,2023,14820,5890,84.2,72.15,-0.592,Monitoramento Padrão,23
+32,ES,Espírito Santo,SE,Sudeste,3833712,1915.0,19.6,7.8,38.9,59.8,2023,2580,940,77.6,67.3,-0.601,Monitoramento Padrão,24
+41,PR,Paraná,S,Sul,11444380,2115.0,21.4,8.0,38.4,62.8,2023,8340,2780,78.5,72.87,-0.642,Monitoramento Padrão,25
+42,SC,Santa Catarina,S,Sul,7610361,2410.0,22.1,7.4,36.8,61.5,2023,4890,2110,87.3,64.25,-1.458,Monitoramento Padrão,26
+53,DF,Distrito Federal,CO,Centro-Oeste,2817381,3120.0,37.2,7.1,34.2,58.3,2023,1620,340,69.5,57.5,-1.496,Monitoramento Padrão,27

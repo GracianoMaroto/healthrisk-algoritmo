@@ -1,0 +1,46 @@
+|--- idade_anos <= 44.50
+|   |--- razao_cintura_estatura <= 0.64
+|   |   |--- met_min_semana <= 100.00
+|   |   |   |--- razao_cintura_estatura <= 0.53
+|   |   |   |   |--- class: 0
+|   |   |   |--- razao_cintura_estatura >  0.53
+|   |   |   |   |--- truncated branch of depth 2
+|   |   |--- met_min_semana >  100.00
+|   |   |   |--- idade_anos <= 38.50
+|   |   |   |   |--- truncated branch of depth 2
+|   |   |   |--- idade_anos >  38.50
+|   |   |   |   |--- truncated branch of depth 2
+|   |--- razao_cintura_estatura >  0.64
+|   |   |--- historico_familiar_diabetes <= 0.50
+|   |   |   |--- imc <= 39.90
+|   |   |   |   |--- truncated branch of depth 2
+|   |   |   |--- imc >  39.90
+|   |   |   |   |--- truncated branch of depth 2
+|   |   |--- historico_familiar_diabetes >  0.50
+|   |   |   |--- idade_anos <= 35.50
+|   |   |   |   |--- truncated branch of depth 2
+|   |   |   |--- idade_anos >  35.50
+|   |   |   |   |--- class: 1
+|--- idade_anos >  44.50
+|   |--- historico_familiar_diabetes <= 0.50
+|   |   |--- razao_cintura_estatura <= 0.65
+|   |   |   |--- hdl <= 42.50
+|   |   |   |   |--- truncated branch of depth 2
+|   |   |   |--- hdl >  42.50
+|   |   |   |   |--- truncated branch of depth 2
+|   |   |--- razao_cintura_estatura >  0.65
+|   |   |   |--- hdl <= 42.50
+|   |   |   |   |--- truncated branch of depth 2
+|   |   |   |--- hdl >  42.50
+|   |   |   |   |--- truncated branch of depth 2
+|   |--- historico_familiar_diabetes >  0.50
+|   |   |--- hdl <= 51.50
+|   |   |   |--- idade_anos <= 62.50
+|   |   |   |   |--- truncated branch of depth 2
+|   |   |   |--- idade_anos >  62.50
+|   |   |   |   |--- truncated branch of depth 2
+|   |   |--- hdl >  51.50
+|   |   |   |--- razao_cintura_estatura <= 0.66
+|   |   |   |   |--- truncated branch of depth 2
+|   |   |   |--- razao_cintura_estatura >  0.66
+|   |   |   |   |--- truncated branch of depth 2

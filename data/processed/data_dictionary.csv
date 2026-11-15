@@ -1,0 +1,26 @@
+nome_analitico,papel_no_modelo,eixo_tematico,tipo_dado,unidade,pct_ausente_amostra,descricao_negocio
+idade_anos,Preditor (X),Demográfico,contínua,anos,0.0,Idade do participante (top-coded em 80 anos)
+sexo,Preditor (X),Demográfico,categórica binária,"1=M, 2=F",0.0,Sexo biológico para ajuste epidemiológico
+escolaridade_ord,Preditor (X),Eixo 3 (Social/Território),ordinal (1 a 5),nível,4.97,Escolaridade adulta (DMDEDUC2)
+razao_renda_pobreza,Preditor (X),Eixo 3 (Social/Território),contínua,razão (0 a 5),12.59,Razão entre renda familiar e linha de pobreza federal (INDFMPIR)
+inseguranca_alimentar,Preditor (X),Eixo 3 (Social/Território),binária (0/1),indicador,4.74,Presença de insegurança alimentar domiciliar (FSDHH > 1)
+densidade_acucar,Preditor (X),Eixo 1 (Alimentação),contínua,g/1000 kcal,9.74,Açúcares totais por 1000 kcal ingeridas (DR1TSUGR/DR1TKCAL*1000)
+densidade_fibra,Preditor (X),Eixo 1 (Alimentação),contínua,g/1000 kcal,9.16,Fibra alimentar por 1000 kcal ingeridas (DR1TFIBE/DR1TKCAL*1000)
+excesso_sodio,Preditor (X),Eixo 1 (Alimentação),binária (0/1),indicador,7.48,Ingestão de sódio >= 2300 mg/dia (limiar diretriz CDC/FDA)
+indice_qualidade_dieta,Preditor (X),Eixo 1 (Alimentação),contínua (z-score),escore padronizado,8.3,Média de z-scores (+fibra -açúcar -sódio -gordura saturada) ajustada no treino
+refeicao_pronta,Preditor (X),Eixo 1 (Alimentação),contínua discreta,refeições/sem,0.16,Frequência semanal de refeições preparadas fora de casa / fast-food (DBD895)
+met_min_semana,Preditor (X),Eixo 2 (Movimento),contínua,MET-min/sem,0.02,Volume semanal de atividade física moderada (4 MET) e vigorosa (8 MET)
+cumpre_oms_150,Preditor (X),Eixo 2 (Movimento),binária (0/1),indicador,0.02,Cumprimento da diretriz OMS (>= 600 MET-min/semana ~ 150 min moderados)
+minutos_sentado,Preditor (X),Eixo 2 (Movimento),contínua,min/dia,0.74,Tempo diário em comportamento sedentário (PAD680)
+sedentarismo_alto,Preditor (X),Eixo 2 (Movimento),binária (0/1),indicador,0.74,Tempo sentado >= 480 min/dia (8 horas ou mais)
+imc,Preditor (X),Cofator Clínico,contínua,kg/m²,0.0,Índice de Massa Corporal medido em exame físico (BMXBMI)
+razao_cintura_estatura,Preditor (X),Cofator Clínico,contínua,razão,0.0,Razão circunferência abdominal / estatura (proxy de adiposidade visceral)
+pressao_alta,Preditor (X),Cofator Clínico,binária (0/1),indicador,3.63,Pressão arterial medida em exame >= 140/90 mmHg (PAS/PAD)
+hdl,Preditor (X),Cofator Clínico,contínua,mg/dL,5.4,Colesterol HDL sérico de rotina (LBDHDD)
+historico_familiar_diabetes,Preditor (X),Cofator Clínico,binária (0/1),indicador,6.08,Parente próximo de 1º grau com diagnóstico de diabetes (MCQ300C)
+diabetes,Alvo (y),Desfecho / Governança,contínua/binária,variável,0.0,Alvo binário (y): 1 se DIQ010==1 ou HbA1c>=6.5% ou Glicemia>=126 mg/dL
+hba1c,Bloqueada / Fora de X,Desfecho / Governança,contínua/binária,variável,3.88,Glicohemoglobina (%) — usada exclusivamente na definição de y (bloqueada em X)
+glicemia_jejum,Bloqueada / Fora de X,Desfecho / Governança,contínua/binária,variável,53.58,Glicemia plasmática de jejum (mg/dL) — exclusiva para y (bloqueada em X)
+diabetes_autorrelato,Bloqueada / Fora de X,Desfecho / Governança,contínua/binária,variável,0.06,Autorrelato diagnóstico prévio (DIQ010) — exclusivo para y (bloqueado em X)
+triglicerideos,Bloqueada / Fora de X,Desfecho / Governança,contínua/binária,variável,54.38,"Triglicerídeos de jejum (mg/dL) — coletada, não modelada (>40% ausente por subamostra)"
+ldl,Bloqueada / Fora de X,Desfecho / Governança,contínua/binária,variável,54.84,"Colesterol LDL de jejum (mg/dL) — coletada, não modelada (>40% ausente por subamostra)"

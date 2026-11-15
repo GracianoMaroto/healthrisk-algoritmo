@@ -1,0 +1,20 @@
+feature,nome_amigavel,importancia_rf,importancia_dt,coef_logistico_padronizado,odds_ratio
+idade_anos,Idade (anos),0.3396,0.5618,1.0521,2.8637
+razao_cintura_estatura,Razão Cintura/Estatura (RCE),0.159,0.1526,0.6782,1.9704
+historico_familiar_diabetes,Histórico Familiar de Diabetes,0.0967,0.1221,0.5376,1.7119
+hdl,Colesterol HDL (mg/dL),0.088,0.1065,-0.4774,0.6204
+imc,IMC (kg/m²),0.0696,0.0109,-0.0745,0.9282
+met_min_semana,Volume Físico (MET-min/sem),0.0488,0.017,-0.2031,0.8162
+indice_qualidade_dieta,Índice de Qualidade da Dieta,0.0366,0.0197,0.096,1.1007
+densidade_fibra,Densidade de Fibra (g/1000kcal),0.0326,0.0,0.1136,1.1203
+densidade_acucar,Densidade de Açúcar (g/1000kcal),0.0309,0.0093,-0.1858,0.8304
+razao_renda_pobreza,Razão Renda/Pobreza (PIR),0.0208,0.0,0.0916,1.0959
+escolaridade_ord,Escolaridade (1-5),0.015,0.0,-0.0856,0.918
+minutos_sentado,Tempo Sentado (min/dia),0.0139,0.0,-0.1713,0.8425
+refeicao_pronta,Refeições Fora/Fast-Food (sem),0.0129,0.0,0.0344,1.0349
+cumpre_oms_150,Cumpre Meta OMS (150 min/sem),0.0094,0.0,-0.0457,0.9553
+sexo,Sexo Biológico,0.0089,0.0,-0.1561,0.8555
+pressao_alta,Pressão Arterial Elevada (>=140/90),0.0073,0.0,-0.0404,0.9604
+inseguranca_alimentar,Insegurança Alimentar,0.0052,0.0,0.1646,1.1789
+excesso_sodio,Excesso de Sódio (>=2300mg),0.0027,0.0,0.0096,1.0096
+sedentarismo_alto,Sedentarismo Alto (>=8h/dia),0.0023,0.0,0.0545,1.0561

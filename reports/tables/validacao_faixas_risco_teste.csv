@@ -1,0 +1,4 @@
+faixa_risco,n_individuos,n_casos_reais,prevalencia_real_pct,pct_total_diabeticos_capturados,prob_media_estimada
+Baixo Risco,343,9,2.62,4.46,0.1095
+Risco Moderado,339,44,12.98,21.78,0.368
+Alto Risco,345,149,43.19,73.76,0.6631

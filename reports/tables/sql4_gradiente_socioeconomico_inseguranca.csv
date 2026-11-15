@@ -1,0 +1,7 @@
+estrato_renda,status_seguranca_alimentar,n_amostra,prevalencia_diabetes_pct,risco_medio_modelo_pct
+1. Baixa Renda (PIR < 1.3),Com Insegurança Alimentar,849,20.49,38.12
+1. Baixa Renda (PIR < 1.3),Segurança Plena,455,16.26,34.26
+2. Renda Média (1.3 <= PIR < 3.5),Com Insegurança Alimentar,667,24.14,40.81
+2. Renda Média (1.3 <= PIR < 3.5),Segurança Plena,1170,19.06,38.35
+3. Alta Renda (PIR >= 3.5),Com Insegurança Alimentar,121,19.01,30.44
+3. Alta Renda (PIR >= 3.5),Segurança Plena,1223,18.15,36.55
