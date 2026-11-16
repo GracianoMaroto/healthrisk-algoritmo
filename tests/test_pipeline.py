@@ -187,3 +187,69 @@ def test_13_interface_streamlit_sem_excecoes():
     at = AppTest.from_file(str(ROOT_DIR / "app" / "app_radar_diabetes.py")).run(timeout=30)
     assert len(at.exception) == 0, f"Exceção detectada no Streamlit: {at.exception}"
 
+
+def test_14_monotonia_clinica_perguntas_acionaveis():
+    """
+    CT-14: No simulador individual, hábitos protetores não podem elevar o risco.
+    Cobre o bug 7%→8% ao marcar exercício (RF observacional + causalidade reversa).
+    """
+    from src.export_mobile_artifacts import traduzir_perguntas
+    from src.monotonia_clinica import aplicar_monotonia_clinica, carregar_treino_referencia, SINAIS_CLINICOS
+
+    metricas = json.loads((PROCESSED_DIR / "model_metrics.json").read_text(encoding="utf-8"))
+    params_dieta = metricas["parametros_indice_dieta_treino"]
+    pipe = joblib.load(MODELS_DIR / "logistic_regression.joblib")
+    X_tr, y_tr = carregar_treino_referencia()
+    aplicar_monotonia_clinica(pipe, X_tr, y_tr)
+
+    for i, feature in enumerate(FEATURES_MODELO_X):
+        sinal = SINAIS_CLINICOS.get(feature)
+        if sinal is None:
+            continue
+        coef = float(pipe.named_steps["clf"].coef_[0][i])
+        assert coef * sinal >= 0, f"Sinal invertido em {feature}: coef={coef}"
+
+    base = {
+        "idade_anos": 25,
+        "sexo": 2,
+        "peso_kg": 62.0,
+        "altura_cm": 165.0,
+        "cintura_cm": 76.0,
+        "familiar_primeiro_grau": False,
+        "pressao_alta": False,
+        "diagnostico_informado": False,
+        "cumpre_150_min": False,
+        "sentado_8h_ou_mais": True,
+        "hortalica_quase_todo_dia": False,
+        "comida_pronta_frequente": True,
+        "bebida_acucarada_frequente": True,
+        "embutido_frequente": True,
+        "escolaridade_ord": 4,
+        "hdl": 55.0,
+        "inseguranca_alimentar": 0.0,
+    }
+
+    def p_de(respostas: dict) -> float:
+        vetor = traduzir_perguntas(respostas, params_dieta)
+        X = pd.DataFrame([vetor], columns=FEATURES_MODELO_X)
+        return float(pipe.predict_proba(X)[0, 1])
+
+    p_ruim = p_de(base)
+    protetores = {
+        "cumpre_150_min": True,
+        "sentado_8h_ou_mais": False,
+        "hortalica_quase_todo_dia": True,
+        "comida_pronta_frequente": False,
+        "bebida_acucarada_frequente": False,
+        "embutido_frequente": False,
+    }
+    for chave, valor in protetores.items():
+        alt = dict(base)
+        alt[chave] = valor
+        p_alt = p_de(alt)
+        assert p_alt < p_ruim, f"{chave}={valor} subiu o risco de {p_ruim:.4f} para {p_alt:.4f}"
+
+    saudavel = dict(base)
+    saudavel.update(protetores)
+    assert p_de(saudavel) < p_ruim
+

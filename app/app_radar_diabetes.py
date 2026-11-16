@@ -21,6 +21,7 @@ import pandas as pd
 import streamlit as st
 
 from src.features import FEATURES_MODELO_X, VARIAVEIS_BLOQUEADAS_VAZAMENTO
+from src.monotonia_clinica import aplicar_monotonia_clinica, carregar_treino_referencia
 
 PROCESSED_DIR = ROOT_DIR / "data" / "processed"
 MODELS_DIR = ROOT_DIR / "models"
@@ -192,9 +193,12 @@ st.markdown(
 
 @st.cache_resource
 def carregar_modelos():
+    lr = joblib.load(MODELS_DIR / "logistic_regression.joblib")
+    X_tr, y_tr = carregar_treino_referencia()
+    aplicar_monotonia_clinica(lr, X_tr, y_tr)
     return {
         "Random Forest": joblib.load(MODELS_DIR / "random_forest.joblib"),
-        "Regressão Logística": joblib.load(MODELS_DIR / "logistic_regression.joblib"),
+        "Regressão Logística": lr,
         "Árvore de Decisão": joblib.load(MODELS_DIR / "decision_tree.joblib"),
     }
 
@@ -217,6 +221,7 @@ def renderizar_medidor_arco_svg(
     cor_hex: str,
     cor_fundo_badge: str,
     detalhe_rodape: str,
+    rotulo_modelo: str = "Regressão Logística",
 ) -> str:
     """Gera um medidor em arco SVG idêntico ao aplicativo Glucomate (Today / Most Recent)."""
     pct = max(0.0, min(100.0, prob * 100.0))
@@ -245,7 +250,7 @@ def renderizar_medidor_arco_svg(
             <div style="position:absolute; top:56px; left:0; right:0; text-align:center;">
                 <div style="font-size:2.35rem; font-weight:800; color:#0F172A; line-height:1.05;">{pct:.1f}%</div>
                 <div style="font-size:0.78rem; font-weight:700; color:#64748B; margin-top:3px;">SCORE DE RISCO</div>
-                <div style="font-size:0.72rem; color:{cor_hex}; font-weight:700; margin-top:2px;">Random Forest</div>
+                <div style="font-size:0.72rem; color:{cor_hex}; font-weight:700; margin-top:2px;">{rotulo_modelo}</div>
             </div>
         </div>
         <div style="background:#F8FAFC; border-radius:12px; padding:10px 12px; font-size:0.81rem; color:#334155; font-weight:600; border:1px solid #E2E8F0;">
@@ -621,9 +626,12 @@ with aba1:
         met_sem, min_sentado, altura, peso, cintura, pressao_alta, hdl, hist_fam
     )
 
-    prob_rf = float(modelos["Random Forest"].predict_proba(X_atual)[0, 1])
+    # Score operacional: LR com monotonia clínica. O RF observacional inverte
+    # hábitos (ex.: exercício 7% → 8%) por causalidade reversa do NHANES.
     prob_lr = float(modelos["Regressão Logística"].predict_proba(X_atual)[0, 1])
+    prob_rf = float(modelos["Random Forest"].predict_proba(X_atual)[0, 1])
     prob_dt = float(modelos["Árvore de Decisão"].predict_proba(X_atual)[0, 1])
+    prob_atual = prob_lr
 
     # Simulação What-If (paciente cumprindo 3h/sem de exercício, máx 5h sentado, dieta rica em fibras e -6cm cintura)
     X_intervencao = montar_vetor_entrada(
@@ -632,22 +640,22 @@ with aba1:
         max(met_sem, 1200), min(min_sentado, 300),
         altura, max(peso - 5, 50), max(cintura - 6, 70), 0, max(hdl, 55), hist_fam
     )
-    prob_rf_pos = float(modelos["Random Forest"].predict_proba(X_intervencao)[0, 1])
-    reducao_relativa = ((prob_rf - prob_rf_pos) / prob_rf * 100.0) if prob_rf > 0 else 0.0
+    prob_pos = float(modelos["Regressão Logística"].predict_proba(X_intervencao)[0, 1])
+    reducao_relativa = ((prob_atual - prob_pos) / prob_atual * 100.0) if prob_atual > 0 else 0.0
 
-    if prob_rf <= limiares_rf["tercil_inferior_baixo_moderado"]:
+    if prob_atual <= limiares_rf["tercil_inferior_baixo_moderado"]:
         rotulo_f, cor_f, bg_f = "BAIXO RISCO", "#10B981", "#D1FAE5"
         rec_acao = "Manter acompanhamento digital anual e incentivo à prática regular de atividade física."
-    elif prob_rf <= limiares_rf["tercil_superior_moderado_alto"]:
+    elif prob_atual <= limiares_rf["tercil_superior_moderado_alto"]:
         rotulo_f, cor_f, bg_f = "RISCO MODERADO", "#F59E0B", "#FEF3C7"
         rec_acao = "Incluir em trilha preventiva de reeducação alimentar, metas de movimento e reavaliar em 6 meses."
     else:
         rotulo_f, cor_f, bg_f = "ALTO RISCO", "#EF4444", "#FEE2E2"
         rec_acao = "Prioridade Clínica: solicitar exame laboratorial (HbA1c e Glicemia de Jejum) e iniciar acompanhamento ativo."
 
-    if prob_rf_pos <= limiares_rf["tercil_inferior_baixo_moderado"]:
+    if prob_pos <= limiares_rf["tercil_inferior_baixo_moderado"]:
         rotulo_pos, cor_pos, bg_pos = "BAIXO RISCO", "#10B981", "#D1FAE5"
-    elif prob_rf_pos <= limiares_rf["tercil_superior_moderado_alto"]:
+    elif prob_pos <= limiares_rf["tercil_superior_moderado_alto"]:
         rotulo_pos, cor_pos, bg_pos = "RISCO MODERADO", "#F59E0B", "#FEF3C7"
     else:
         rotulo_pos, cor_pos, bg_pos = "ALTO RISCO", "#EF4444", "#FEE2E2"
@@ -658,20 +666,20 @@ with aba1:
         with g1:
             st.markdown(
                 renderizar_medidor_arco_svg(
-                    prob=prob_rf,
+                    prob=prob_atual,
                     titulo_topo="Diagnóstico Preditivo Atual",
                     subtitulo_topo="Estimativa sem exames de sangue glicêmicos",
                     rotulo_faixa=rotulo_f,
                     cor_hex=cor_f,
                     cor_fundo_badge=bg_f,
-                    detalhe_rodape=f"Consenso: Reg. Logística <b>{prob_lr*100:.1f}%</b>  •  Árvore <b>{prob_dt*100:.1f}%</b>",
+                    detalhe_rodape=f"Consenso observacional: RF <b>{prob_rf*100:.1f}%</b>  •  Árvore <b>{prob_dt*100:.1f}%</b>",
                 ),
                 unsafe_allow_html=True,
             )
         with g2:
             st.markdown(
                 renderizar_medidor_arco_svg(
-                    prob=prob_rf_pos,
+                    prob=prob_pos,
                     titulo_topo="Simulação What-If (Com Prevenção)",
                     subtitulo_topo="Se atingir 3h/sem de treino + máx 5h sentado + fibras",
                     rotulo_faixa=rotulo_pos,
