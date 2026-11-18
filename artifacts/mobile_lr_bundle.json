@@ -346,7 +346,6 @@
     "limiar_triagem_sensibilidade": 0.4
   },
   "fatores_acionaveis": [
-    "idade_anos",
     "razao_cintura_estatura",
     "historico_familiar_diabetes",
     "densidade_acucar",
